@@ -7,7 +7,7 @@ sim = Simulation()
 n = 20
 a = -2
 b = 12
-l = 300
+l = 48
 
 NUM_OF_ROADS = 36
 VEHICLE_RATE = 100
@@ -15,7 +15,7 @@ STEPS_PER_UPDATE = 10
 
 # Nodes
 WEST_RIGHT_START = (-b-l, a)
-WEST_LEFT_START =	(-b-l, -a)
+WEST_LEFT_START = (-b-l, -a)
 
 SOUTH_RIGHT_START = (a, b+l)
 SOUTH_LEFT_START = (-a, b+l)
@@ -38,7 +38,6 @@ EAST_LEFT = (b, a)
 NORTH_RIGHT = (-a, -b)
 NORTH_LEFT = (a, -b)
 
-# Create Nodes with offset to avoid overlapping
 WEST_RIGHT_START2 = (WEST_RIGHT_START[0], WEST_RIGHT_START[1] - 4)
 WEST_LEFT_START2 = (WEST_LEFT_START[0], WEST_LEFT_START[1] + 4)
 
@@ -51,7 +50,6 @@ EAST_LEFT_START2 = (EAST_LEFT_START[0], EAST_LEFT_START[1] - 4)
 NORTH_RIGHT_START2 = (NORTH_RIGHT_START[0] + 4, NORTH_RIGHT_START[1])
 NORTH_LEFT_START2 = (NORTH_LEFT_START[0] - 4, NORTH_LEFT_START[1])
 
-# Create Nodes with offset to avoid overlapping
 WEST_RIGHT_START3 = (WEST_RIGHT_START[0], WEST_RIGHT_START[1] - 8)
 WEST_LEFT_START3 = (WEST_LEFT_START[0], WEST_LEFT_START[1] + 8)
 
@@ -64,7 +62,6 @@ EAST_LEFT_START3 = (EAST_LEFT_START[0], EAST_LEFT_START[1] - 8)
 NORTH_RIGHT_START3 = (NORTH_RIGHT_START[0] + 8, NORTH_RIGHT_START[1])
 NORTH_LEFT_START3 = (NORTH_LEFT_START[0] - 8, NORTH_LEFT_START[1])
 
-# Create Nodes with offset to avoid overlapping
 WEST_RIGHT2 = (WEST_RIGHT[0], WEST_RIGHT[1] - 4)
 WEST_LEFT2 =	(WEST_LEFT[0], WEST_LEFT[1] + 4)
 
@@ -77,7 +74,6 @@ EAST_LEFT2 = (EAST_LEFT[0], EAST_LEFT[1] - 4)
 NORTH_RIGHT2 = (NORTH_RIGHT[0] + 4, NORTH_RIGHT[1])
 NORTH_LEFT2 = (NORTH_LEFT[0] - 4, NORTH_LEFT[1])
 
-# Create Nodes with offset to avoid overlapping
 WEST_RIGHT3 = (WEST_RIGHT[0], WEST_RIGHT[1] - 8)
 WEST_LEFT3 =	(WEST_LEFT[0], WEST_LEFT[1] + 8)
 
@@ -118,7 +114,6 @@ EAST_LEFT_TURN = turn_road(EAST_RIGHT, SOUTH_LEFT, TURN_LEFT, n)
 NORTH_RIGHT_TURN = turn_road(NORTH_RIGHT, WEST_LEFT, TURN_RIGHT, n)
 NORTH_LEFT_TURN = turn_road(NORTH_RIGHT, EAST_LEFT, TURN_LEFT, n)
 
-# Create Roads
 WEST_INBOUND2 = (WEST_RIGHT_START2, WEST_RIGHT2)
 SOUTH_INBOUND2 = (SOUTH_RIGHT_START2, SOUTH_RIGHT2)
 EAST_INBOUND2 = (EAST_RIGHT_START2, EAST_RIGHT2)
@@ -146,7 +141,6 @@ EAST_LEFT_TURN2 = turn_road(EAST_RIGHT2, SOUTH_LEFT2, TURN_LEFT, n)
 NORTH_RIGHT_TURN2 = turn_road(NORTH_RIGHT2, WEST_LEFT2, TURN_RIGHT, n)
 NORTH_LEFT_TURN2 = turn_road(NORTH_RIGHT2, EAST_LEFT2, TURN_LEFT, n)
 
-# Create Roads
 WEST_INBOUND3 = (WEST_RIGHT_START3, WEST_RIGHT3)
 SOUTH_INBOUND3 = (SOUTH_RIGHT_START3, SOUTH_RIGHT3)
 EAST_INBOUND3 = (EAST_RIGHT_START3, EAST_RIGHT3)
@@ -174,6 +168,163 @@ EAST_LEFT_TURN3 = turn_road(EAST_RIGHT3, SOUTH_LEFT3, TURN_LEFT, n)
 NORTH_RIGHT_TURN3 = turn_road(NORTH_RIGHT3, WEST_LEFT3, TURN_RIGHT, n)
 NORTH_LEFT_TURN3 = turn_road(NORTH_RIGHT3, EAST_LEFT3, TURN_LEFT, n)
 
+# Trying second intersection to the right of the original one
+o2 = (2*b+l, 0)
+
+b_WEST_RIGHT_START = (o2[0] + WEST_RIGHT_START[0], EAST_LEFT[1])
+b_WEST_LEFT_START = (o2[0] + WEST_LEFT_START[0], EAST_RIGHT[1])
+
+b_SOUTH_RIGHT_START = (o2[0] + SOUTH_RIGHT_START[0], SOUTH_RIGHT_START[1])
+b_SOUTH_LEFT_START = (o2[0] + SOUTH_LEFT_START[0], SOUTH_LEFT_START[1])
+
+b_EAST_RIGHT_START = (o2[0] + EAST_RIGHT_START[0], EAST_RIGHT_START[1])
+b_EAST_LEFT_START = (o2[0] + EAST_LEFT_START[0], EAST_LEFT_START[1])
+
+b_NORTH_RIGHT_START = (o2[0] + NORTH_RIGHT_START[0], NORTH_RIGHT_START[1])
+b_NORTH_LEFT_START = (o2[0] + NORTH_LEFT_START[0], NORTH_LEFT_START[1])
+
+b_WEST_RIGHT = (o2[0] + WEST_RIGHT[0], EAST_LEFT_START[1])
+b_WEST_LEFT = (o2[0] + WEST_LEFT[0], EAST_RIGHT_START[1])
+
+b_SOUTH_RIGHT = (o2[0] + SOUTH_RIGHT[0], SOUTH_RIGHT[1])
+b_SOUTH_LEFT = (o2[0] + SOUTH_LEFT[0], SOUTH_LEFT[1])
+
+b_EAST_RIGHT = (o2[0] + EAST_RIGHT[0], EAST_RIGHT[1])
+b_EAST_LEFT = (o2[0] + EAST_LEFT[0], EAST_LEFT[1])
+
+b_NORTH_RIGHT = (o2[0] + NORTH_RIGHT[0], NORTH_LEFT[1])
+b_NORTH_LEFT = (o2[0] + NORTH_LEFT[0], NORTH_LEFT[1])
+
+b_WEST_RIGHT_START2 = (b_WEST_RIGHT_START[0], b_WEST_RIGHT_START[1] - 4)
+b_WEST_LEFT_START2 = (b_WEST_LEFT_START[0], b_WEST_LEFT_START[1] + 4)
+
+b_SOUTH_RIGHT_START2 = (b_SOUTH_RIGHT_START[0] - 4, b_SOUTH_RIGHT_START[1])
+b_SOUTH_LEFT_START2 = (b_SOUTH_LEFT_START[0] + 4, b_SOUTH_LEFT_START[1])
+
+b_EAST_RIGHT_START2 = (b_EAST_RIGHT_START[0], b_EAST_RIGHT_START[1] + 4)
+b_EAST_LEFT_START2 = (b_EAST_LEFT_START[0], b_EAST_LEFT_START[1] - 4)
+
+b_NORTH_RIGHT_START2 = (b_NORTH_RIGHT_START[0] + 4, b_NORTH_RIGHT_START[1])
+b_NORTH_LEFT_START2 = (b_NORTH_LEFT_START[0] - 4, b_NORTH_LEFT_START[1])
+
+b_WEST_RIGHT_START3 = (b_WEST_RIGHT_START[0], b_WEST_RIGHT_START[1] - 8)
+b_WEST_LEFT_START3 = (b_WEST_LEFT_START[0], b_WEST_LEFT_START[1] + 8)
+
+b_SOUTH_RIGHT_START3 = (b_SOUTH_RIGHT_START[0] - 8, b_SOUTH_RIGHT_START[1])
+b_SOUTH_LEFT_START3 = (b_SOUTH_LEFT_START[0] + 8, b_SOUTH_LEFT_START[1])
+
+b_EAST_RIGHT_START3 = (b_EAST_RIGHT_START[0], b_EAST_RIGHT_START[1] + 8)
+b_EAST_LEFT_START3 = (b_EAST_LEFT_START[0], b_EAST_LEFT_START[1] - 8)
+
+b_NORTH_RIGHT_START3 = (b_NORTH_RIGHT_START[0] + 8, b_NORTH_RIGHT_START[1])
+b_NORTH_LEFT_START3 = (b_NORTH_LEFT_START[0] - 8, b_NORTH_LEFT_START[1])
+
+b_WEST_RIGHT2 = (b_WEST_RIGHT[0], b_WEST_RIGHT[1] - 4)
+b_WEST_LEFT2 =	(b_WEST_LEFT[0], b_WEST_LEFT[1] + 4)
+
+b_SOUTH_RIGHT2 = (b_SOUTH_RIGHT[0] - 4, b_SOUTH_RIGHT[1])
+b_SOUTH_LEFT2 = (b_SOUTH_LEFT[0] + 4, b_SOUTH_LEFT[1])
+
+b_EAST_RIGHT2 = (b_EAST_RIGHT[0], b_EAST_RIGHT[1] + 4)
+b_EAST_LEFT2 = (b_EAST_LEFT[0], b_EAST_LEFT[1] - 4)
+
+b_NORTH_RIGHT2 = (b_NORTH_RIGHT[0] + 4, b_NORTH_RIGHT[1])
+b_NORTH_LEFT2 = (b_NORTH_LEFT[0] - 4, b_NORTH_LEFT[1])
+
+b_WEST_RIGHT3 = (b_WEST_RIGHT[0], b_WEST_RIGHT[1] - 8)
+b_WEST_LEFT3 =	(b_WEST_LEFT[0], b_WEST_LEFT[1] + 8)
+
+b_SOUTH_RIGHT3 = (b_SOUTH_RIGHT[0] - 8, b_SOUTH_RIGHT[1])
+b_SOUTH_LEFT3 = (b_SOUTH_LEFT[0] + 8, b_SOUTH_LEFT[1])
+
+b_EAST_RIGHT3 = (b_EAST_RIGHT[0], b_EAST_RIGHT[1] + 8)
+b_EAST_LEFT3 = (b_EAST_LEFT[0], b_EAST_LEFT[1] - 8)
+
+b_NORTH_RIGHT3 = (b_NORTH_RIGHT[0] + 8, b_NORTH_RIGHT[1])
+b_NORTH_LEFT3 = (b_NORTH_LEFT[0] - 8, b_NORTH_LEFT[1])
+
+# Intersection b - Roads
+b_WEST_INBOUND = (b_WEST_RIGHT_START, b_WEST_RIGHT)
+b_SOUTH_INBOUND = (b_SOUTH_RIGHT_START, b_SOUTH_RIGHT)
+b_EAST_INBOUND = (b_EAST_RIGHT_START, b_EAST_RIGHT)
+b_NORTH_INBOUND = (b_NORTH_RIGHT_START, b_NORTH_RIGHT)
+
+b_WEST_OUTBOUND = (b_WEST_LEFT, b_WEST_LEFT_START)
+b_SOUTH_OUTBOUND = (b_SOUTH_LEFT, b_SOUTH_LEFT_START)
+b_EAST_OUTBOUND = (b_EAST_LEFT, b_EAST_LEFT_START)
+b_NORTH_OUTBOUND = (b_NORTH_LEFT, b_NORTH_LEFT_START)
+
+b_WEST_STRAIGHT = (b_WEST_RIGHT, b_EAST_LEFT)
+b_SOUTH_STRAIGHT = (b_SOUTH_RIGHT, b_NORTH_LEFT)
+b_EAST_STRAIGHT = (b_EAST_RIGHT, b_WEST_LEFT)
+b_NORTH_STRAIGHT = (b_NORTH_RIGHT, b_SOUTH_LEFT)
+
+b_WEST_RIGHT_TURN = turn_road(b_WEST_RIGHT, b_SOUTH_LEFT, TURN_RIGHT, n)
+b_WEST_LEFT_TURN = turn_road(b_WEST_RIGHT, b_NORTH_LEFT, TURN_LEFT, n)
+
+b_SOUTH_RIGHT_TURN = turn_road(b_SOUTH_RIGHT, b_EAST_LEFT, TURN_RIGHT, n)
+b_SOUTH_LEFT_TURN = turn_road(b_SOUTH_RIGHT, b_WEST_LEFT, TURN_LEFT, n)
+
+b_EAST_RIGHT_TURN = turn_road(b_EAST_RIGHT, b_NORTH_LEFT, TURN_RIGHT, n)
+b_EAST_LEFT_TURN = turn_road(b_EAST_RIGHT, b_SOUTH_LEFT, TURN_LEFT, n)
+
+b_NORTH_RIGHT_TURN = turn_road(b_NORTH_RIGHT, b_WEST_LEFT, TURN_RIGHT, n)
+b_NORTH_LEFT_TURN = turn_road(b_NORTH_RIGHT, b_EAST_LEFT, TURN_LEFT, n)
+
+b_WEST_INBOUND2 = (b_WEST_RIGHT_START2, b_WEST_RIGHT2)
+b_SOUTH_INBOUND2 = (b_SOUTH_RIGHT_START2, b_SOUTH_RIGHT2)
+b_EAST_INBOUND2 = (b_EAST_RIGHT_START2, b_EAST_RIGHT2)
+b_NORTH_INBOUND2 = (b_NORTH_RIGHT_START2, b_NORTH_RIGHT2)
+
+b_WEST_OUTBOUND2 = (b_WEST_LEFT2, b_WEST_LEFT_START2)
+b_SOUTH_OUTBOUND2 = (b_SOUTH_LEFT2, b_SOUTH_LEFT_START2)
+b_EAST_OUTBOUND2 = (b_EAST_LEFT2, b_EAST_LEFT_START2)
+b_NORTH_OUTBOUND2 = (b_NORTH_LEFT2, b_NORTH_LEFT_START2)
+
+b_WEST_STRAIGHT2 = (b_WEST_RIGHT2, b_EAST_LEFT2)
+b_SOUTH_STRAIGHT2 = (b_SOUTH_RIGHT2, b_NORTH_LEFT2)
+b_EAST_STRAIGHT2 = (b_EAST_RIGHT2, b_WEST_LEFT2)
+b_NORTH_STRAIGHT2 = (b_NORTH_RIGHT2, b_SOUTH_LEFT2)
+
+b_WEST_RIGHT_TURN2 = turn_road(b_WEST_RIGHT2, b_SOUTH_LEFT2, TURN_RIGHT, n)
+b_WEST_LEFT_TURN2 = turn_road(b_WEST_RIGHT2, b_NORTH_LEFT2, TURN_LEFT, n)
+
+b_SOUTH_RIGHT_TURN2 = turn_road(b_SOUTH_RIGHT2, b_EAST_LEFT2, TURN_RIGHT, n)
+b_SOUTH_LEFT_TURN2 = turn_road(b_SOUTH_RIGHT2, b_WEST_LEFT2, TURN_LEFT, n)
+
+b_EAST_RIGHT_TURN2 = turn_road(b_EAST_RIGHT2, b_NORTH_LEFT2, TURN_RIGHT, n)
+b_EAST_LEFT_TURN2 = turn_road(b_EAST_RIGHT2, b_SOUTH_LEFT2, TURN_LEFT, n)
+
+b_NORTH_RIGHT_TURN2 = turn_road(b_NORTH_RIGHT2, b_WEST_LEFT2, TURN_RIGHT, n)
+b_NORTH_LEFT_TURN2 = turn_road(b_NORTH_RIGHT2, b_EAST_LEFT2, TURN_LEFT, n)
+
+b_WEST_INBOUND3 = (b_WEST_RIGHT_START3, b_WEST_RIGHT3)
+b_SOUTH_INBOUND3 = (b_SOUTH_RIGHT_START3, b_SOUTH_RIGHT3)
+b_EAST_INBOUND3 = (b_EAST_RIGHT_START3, b_EAST_RIGHT3)
+b_NORTH_INBOUND3 = (b_NORTH_RIGHT_START3, b_NORTH_RIGHT3)
+
+b_WEST_OUTBOUND3 = (b_WEST_LEFT3, b_WEST_LEFT_START3)
+b_SOUTH_OUTBOUND3 = (b_SOUTH_LEFT3, b_SOUTH_LEFT_START3)
+b_EAST_OUTBOUND3 = (b_EAST_LEFT3, b_EAST_LEFT_START3)
+b_NORTH_OUTBOUND3 = (b_NORTH_LEFT3, b_NORTH_LEFT_START3)
+
+b_WEST_STRAIGHT3 = (b_WEST_RIGHT3, b_EAST_LEFT3)
+b_SOUTH_STRAIGHT3 = (b_SOUTH_RIGHT3, b_NORTH_LEFT3)
+b_EAST_STRAIGHT3 = (b_EAST_RIGHT3, b_WEST_LEFT3)
+b_NORTH_STRAIGHT3 = (b_NORTH_RIGHT3, b_SOUTH_LEFT3)
+
+b_WEST_RIGHT_TURN3 = turn_road(b_WEST_RIGHT3, b_SOUTH_LEFT3, TURN_RIGHT, n)
+b_WEST_LEFT_TURN3 = turn_road(b_WEST_RIGHT3, b_NORTH_LEFT3, TURN_LEFT, n)
+
+b_SOUTH_RIGHT_TURN3 = turn_road(b_SOUTH_RIGHT3, b_EAST_LEFT3, TURN_RIGHT, n)
+b_SOUTH_LEFT_TURN3 = turn_road(b_SOUTH_RIGHT3, b_WEST_LEFT3, TURN_LEFT, n)
+
+b_EAST_RIGHT_TURN3 = turn_road(b_EAST_RIGHT3, b_NORTH_LEFT3, TURN_RIGHT, n)
+b_EAST_LEFT_TURN3 = turn_road(b_EAST_RIGHT3, b_SOUTH_LEFT3, TURN_LEFT, n)
+
+b_NORTH_RIGHT_TURN3 = turn_road(b_NORTH_RIGHT3, b_WEST_LEFT3, TURN_RIGHT, n)
+b_NORTH_LEFT_TURN3 = turn_road(b_NORTH_RIGHT3, b_EAST_LEFT3, TURN_LEFT, n)
+
 sim.create_roads([
     WEST_INBOUND,   #0
     SOUTH_INBOUND,  #1
@@ -190,7 +341,6 @@ sim.create_roads([
     EAST_STRAIGHT,  #10
     NORTH_STRAIGHT, #11
 
-    # NEW ROADS ----------------------------------------------
     WEST_INBOUND2,  #12
     SOUTH_INBOUND2, #13
     EAST_INBOUND2,  #14
@@ -205,7 +355,6 @@ sim.create_roads([
     SOUTH_STRAIGHT2, #21
     EAST_STRAIGHT2, #22
     NORTH_STRAIGHT2, #23
-    #----------------------------------------------------------------
 
     WEST_INBOUND3,  #24
     SOUTH_INBOUND3, #25
@@ -222,41 +371,122 @@ sim.create_roads([
     EAST_STRAIGHT3, #34
     NORTH_STRAIGHT3, #35
 
-    *WEST_RIGHT_TURN,
-    *WEST_LEFT_TURN,
+    *WEST_RIGHT_TURN, #36
+    *WEST_LEFT_TURN, #56
 
-    *SOUTH_RIGHT_TURN,
-    *SOUTH_LEFT_TURN,
+    *SOUTH_RIGHT_TURN, #76
+    *SOUTH_LEFT_TURN, #96
 
-    *EAST_RIGHT_TURN,
-    *EAST_LEFT_TURN,
+    *EAST_RIGHT_TURN, #116
+    *EAST_LEFT_TURN, #136
 
-    *NORTH_RIGHT_TURN,
-    *NORTH_LEFT_TURN,
+    *NORTH_RIGHT_TURN, #156
+    *NORTH_LEFT_TURN, #176
 
-    *WEST_RIGHT_TURN2,
-    *WEST_LEFT_TURN2,
+    *WEST_RIGHT_TURN2, #196
+    *WEST_LEFT_TURN2, #216
     
-    *SOUTH_RIGHT_TURN2,
-    *SOUTH_LEFT_TURN2,
+    *SOUTH_RIGHT_TURN2, #236
+    *SOUTH_LEFT_TURN2, #256
 
-    *EAST_RIGHT_TURN2,
-    *EAST_LEFT_TURN2,
+    *EAST_RIGHT_TURN2, #276
+    *EAST_LEFT_TURN2, #296
 
-    *NORTH_RIGHT_TURN2,
-    *NORTH_LEFT_TURN2,
+    *NORTH_RIGHT_TURN2, #316
+    *NORTH_LEFT_TURN2, #336
 
-    *WEST_RIGHT_TURN3,
-    *WEST_LEFT_TURN3,
+    *WEST_RIGHT_TURN3, #356
+    *WEST_LEFT_TURN3, #376
 
-    *SOUTH_RIGHT_TURN3,
-    *SOUTH_LEFT_TURN3,
+    *SOUTH_RIGHT_TURN3, #396
+    *SOUTH_LEFT_TURN3, #416
 
-    *EAST_RIGHT_TURN3,
-    *EAST_LEFT_TURN3,
+    *EAST_RIGHT_TURN3, #436
+    *EAST_LEFT_TURN3, #456
 
-    *NORTH_RIGHT_TURN3,
-    *NORTH_LEFT_TURN3
+    *NORTH_RIGHT_TURN3, #476
+    *NORTH_LEFT_TURN3, #496
+    
+    b_WEST_INBOUND, #516
+    b_SOUTH_INBOUND, #517
+    b_EAST_INBOUND, #518
+    b_NORTH_INBOUND, #519
+    
+    b_WEST_OUTBOUND, #520
+    b_SOUTH_OUTBOUND, #521
+    b_EAST_OUTBOUND, #522
+    b_NORTH_OUTBOUND, #523
+    
+    b_WEST_STRAIGHT, #524
+    b_SOUTH_STRAIGHT, #525
+    b_EAST_STRAIGHT, #526
+    b_NORTH_STRAIGHT, #527
+    
+    b_WEST_INBOUND2, #528
+    b_SOUTH_INBOUND2, #529
+    b_EAST_INBOUND2, #530
+    b_NORTH_INBOUND2, #531
+    
+    b_WEST_OUTBOUND2, #532
+    b_SOUTH_OUTBOUND2, #533
+    b_EAST_OUTBOUND2, #534
+    b_NORTH_OUTBOUND2, #535
+    
+    b_WEST_STRAIGHT2, #536
+    b_SOUTH_STRAIGHT2, #537
+    b_EAST_STRAIGHT2, #538
+    b_NORTH_STRAIGHT2, #539
+    
+    b_WEST_INBOUND3, #540
+    b_SOUTH_INBOUND3, #541
+    b_EAST_INBOUND3, #542
+    b_NORTH_INBOUND3, #543
+    
+    b_WEST_OUTBOUND3, #544
+    b_SOUTH_OUTBOUND3, #545
+    b_EAST_OUTBOUND3, #546
+    b_NORTH_OUTBOUND3, #547
+    
+    b_WEST_STRAIGHT3, #548
+    b_SOUTH_STRAIGHT3, #549
+    b_EAST_STRAIGHT3, #550
+    b_NORTH_STRAIGHT3, #551
+    
+    *b_WEST_RIGHT_TURN, #552
+    *b_WEST_LEFT_TURN, #572
+
+    *b_SOUTH_RIGHT_TURN, #592
+    *b_SOUTH_LEFT_TURN, #612
+
+    *b_EAST_RIGHT_TURN, #632
+    *b_EAST_LEFT_TURN, #652
+
+    *b_NORTH_RIGHT_TURN, #672
+    *b_NORTH_LEFT_TURN, #692
+
+    *b_WEST_RIGHT_TURN2, #712
+    *b_WEST_LEFT_TURN2, #732
+    
+    *b_SOUTH_RIGHT_TURN2, #752
+    *b_SOUTH_LEFT_TURN2, #772
+
+    *b_EAST_RIGHT_TURN2, #792
+    *b_EAST_LEFT_TURN2, #812
+
+    *b_NORTH_RIGHT_TURN2, #832
+    *b_NORTH_LEFT_TURN2, #852
+
+    *b_WEST_RIGHT_TURN3, #872
+    *b_WEST_LEFT_TURN3, #892
+
+    *b_SOUTH_RIGHT_TURN3, #912
+    *b_SOUTH_LEFT_TURN3, #932
+
+    *b_EAST_RIGHT_TURN3, #952
+    *b_EAST_LEFT_TURN3, #972
+
+    *b_NORTH_RIGHT_TURN3, #992
+    *b_NORTH_LEFT_TURN3, #1012
 ])
 
 def road(a): return range(a, a+n)
@@ -264,58 +494,29 @@ def road(a): return range(a, a+n)
 sim.create_gen({
 'vehicle_rate': VEHICLE_RATE,
 'vehicles':[
-    # 1st Lane
-    [2, {'path': [0, 8, 6]}],
-    [2, {'path': [0, *road(NUM_OF_ROADS), 5]}],
-    # [2, {'path': [0, *road(24+n), 7]}],
-
-    [2, {'path': [1, 9, 7]}],
-    [2, {'path': [1, *road(NUM_OF_ROADS+2*n), 6]}],
-    # [1, {'path': [1, *road(24+3*n), 4]}],
-
-    [3, {'path': [2, 10, 4]}],
-    [3, {'path': [2, *road(NUM_OF_ROADS+4*n), 7]}],
-    # [1, {'path': [2, *road(24+5*n), 5]}],
-
-    [3, {'path': [3, 11, 5]}],
-    [3, {'path': [3, *road(NUM_OF_ROADS+6*n), 4]}],
-    # [2, {'path': [3, *road(24+7*n), 6]}],
-
-    # 2nd Lane
-    [2, {'path': [12, 20, 18]}],
-    # [2, {'path': [12, *road(24+8*n), 17]}],
-    [2, {'path': [12, *road(NUM_OF_ROADS+9*n), 19]}],
-
+    [2, {'path': [0, *road(36), 5]}],
+    [1, {'path': [12, 20, 528, 536, 534]}],
+    [2, {'path': [24, *road(376), 31]}],
+    
+    [1, {'path': [1, *road(76), 516, *road(552), 521]}],
     [2, {'path': [13, 21, 19]}],
-    # [2, {'path': [13, *road(24+10*n), 18]}],
-    [2, {'path': [13, *road(NUM_OF_ROADS+11*n), 16]}],
-
-    [3, {'path': [14, 22, 16]}],
-    # [2, {'path': [14, *road(24+12*n), 19]}],
-    [3, {'path': [14, *road(NUM_OF_ROADS+13*n), 17]}],
-
-    [3, {'path': [15, 23, 17]}],
-    # [2, {'path': [15, *road(24+14*n), 16]}],
-    [3, {'path': [15, *road(NUM_OF_ROADS+15*n), 18]}],
-
-
-    # 3rd Lane (no red light/turn left only)
-    # [3, {'path': [24, 32, 30]}],
-    # [2, {'path': [24, *road(NUM_OF_ROADS+16*n), 29]}],
-    [3, {'path': [24, *road(NUM_OF_ROADS+17*n), 31]}],
-
-    # [3, {'path': [25, 33, 31]}],
-    # [2, {'path': [25, *road(NUM_OF_ROADS+18*n), 30]}],
-    [3, {'path': [25, *road(NUM_OF_ROADS+19*n), 28]}],
-
-    # [3, {'path': [26, 34, 28]}],
-    # [2, {'path': [26, *road(NUM_OF_ROADS+20*n), 31]}],
-    [4, {'path': [26, *road(NUM_OF_ROADS+21*n), 29]}],
-
-    # [3, {'path': [27, 35, 29]}],
-    # [2, {'path': [27, *road(NUM_OF_ROADS+22*n), 28]}],
-    [4, {'path': [27, *road(NUM_OF_ROADS+23*n), 30]}]
-
+    [2, {'path': [25, *road(416), 28]}],
+    
+    [2, {'path': [3, *road(156), 4]}],
+    [2, {'path': [15, 23, 17]}],
+    [1, {'path': [27, *road(496), 540, *road(892), 547]}],
+    
+    [1, {'path': [519, *road(672), 2, *road(116), 7]}],
+    [2, {'path': [531, *road(539), 533]}],
+    [2, {'path': [543, *road(1012), 546]}],
+    
+    [2, {'path': [518, *road(632), 523]}],
+    [1, {'path': [530, 538, 14, 22, 16]}],
+    [2, {'path': [542, *road(972), 545]}],
+    
+    [2, {'path': [517, *road(592), 522]}],
+    [2, {'path': [529, 537, 535]}],
+    [1, {'path': [541, *road(932), 26, *road(456), 29]}]
 ]})
 
 sim.create_signal([[0], [1], [2], [3]])
@@ -327,6 +528,14 @@ sim.create_signal([[25]])
 sim.create_signal([[26]])
 sim.create_signal([[27]])
 
+sim.create_signal([[516], [517], [518], [519]])
+sim.create_signal([[528], [529], [530], [531]])
+
+sim.create_signal([[540]])
+sim.create_signal([[541]])
+sim.create_signal([[542]])
+sim.create_signal([[543]])
+            
 # Start simulation
 win = Window(sim)
 win.zoom = 10
