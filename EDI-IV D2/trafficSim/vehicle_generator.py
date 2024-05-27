@@ -31,6 +31,8 @@ class VehicleGenerator:
         total = sum(pair[0] for pair in self.vehicles)
         r = randint(1, total+1)
         for (weight, config) in self.vehicles:
+            print(weight)
+            print(config)
             r -= weight
             if r <= 0:
                 return Vehicle(config)
@@ -49,4 +51,3 @@ class VehicleGenerator:
                 # Reset last_added_time and upcoming_vehicle
                 self.last_added_time = self.sim.t
             self.upcoming_vehicle = self.generate_vehicle()
-
