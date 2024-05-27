@@ -18,6 +18,7 @@ def curve_road(start, end, control, resolution=15):
 
 TURN_LEFT = 0
 TURN_RIGHT = 1
+
 def turn_road(start, end, turn_direction, resolution=15):
 	x = min(start[0], end[0])
 	y = min(start[1], end[1])

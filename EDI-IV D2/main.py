@@ -10,7 +10,7 @@ b = 12
 l = 48
 
 NUM_OF_ROADS = 36
-VEHICLE_RATE = 100
+VEHICLE_RATE = 50
 STEPS_PER_UPDATE = 10
 
 # Nodes
@@ -507,7 +507,7 @@ sim.create_gen({
     [1, {'path': [27, *road(496), 540, *road(892), 547]}],
     
     [1, {'path': [519, *road(672), 2, *road(116), 7]}],
-    [2, {'path': [531, *road(539), 533]}],
+    [2, {'path': [531, 539, 533]}],
     [2, {'path': [543, *road(1012), 546]}],
     
     [2, {'path': [518, *road(632), 523]}],
@@ -519,8 +519,7 @@ sim.create_gen({
     [1, {'path': [541, *road(932), 26, *road(456), 29]}]
 ]})
 
-sim.create_signal([[0], [1], [2], [3]])
-sim.create_signal([[12], [13], [14], [15]])
+sim.create_signal([[0], [1], [2], [3], [12], [13], [14], [15]])
 
 # Create Green Light for 3rd Lane
 sim.create_signal([[24]])
@@ -528,13 +527,14 @@ sim.create_signal([[25]])
 sim.create_signal([[26]])
 sim.create_signal([[27]])
 
-sim.create_signal([[516], [517], [518], [519]])
-sim.create_signal([[528], [529], [530], [531]])
+sim.create_signal([[516], [517], [518], [519], [528], [529], [530], [531]])
 
 sim.create_signal([[540]])
 sim.create_signal([[541]])
 sim.create_signal([[542]])
 sim.create_signal([[543]])
+
+print(sim.traffic_signals[0].new_cycle)
             
 # Start simulation
 win = Window(sim)

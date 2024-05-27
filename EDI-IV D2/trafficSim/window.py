@@ -279,7 +279,6 @@ class Window:
 
     def draw_vehicles(self):
         for road in self.sim.roads:
-            # Draw vehicles
             for vehicle in road.vehicles:
                 self.draw_vehicle(vehicle, road)
 
@@ -297,7 +296,8 @@ class Window:
                         position,
                         (1, 3),
                         cos=road.angle_cos, sin=road.angle_sin,
-                        color=color)
+                        color=color
+                    )
                     
 
     def draw_status(self):
@@ -326,8 +326,6 @@ class Window:
             text_pause = self.text_font.render(f'Pause', False, (0, 0, 0))
         self.screen.blit(text_pause, (1000, 0))
         
-
-
 
     def draw(self):
         # Fill background

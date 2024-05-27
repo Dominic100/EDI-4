@@ -2,6 +2,7 @@ from .road import Road
 from copy import deepcopy
 from .vehicle_generator import VehicleGenerator
 from .traffic_signal import TrafficSignal
+from .adaptive_signal_controller import AdaptiveSignalController, Intersection
 
 class Simulation:
     vehiclesPassed = 0;
@@ -24,6 +25,7 @@ class Simulation:
         self.roads = []         # Array to store roads
         self.generators = []
         self.traffic_signals = []
+        self.intersections = []
 
     def create_road(self, start, end):
         road = Road(start, end)
@@ -45,6 +47,17 @@ class Simulation:
         sig = TrafficSignal(roads, config)
         self.traffic_signals.append(sig)
         return sig
+    
+    def create_intersection(self, id, roads, signals):
+        roads = [[self.roads[i] for i in road_group] for road_group in roads]
+        inter = Intersection(id, roads, signals)
+        self.intersections.append(inter)
+        return inter
+    
+    def create_controller(self, intersections):
+        asc = AdaptiveSignalController(intersections)
+        self.asc = asc
+        return asc
 
     def update(self):
         # Update every road
